@@ -5,7 +5,7 @@ bot = telebot.TeleBot('5460516821:AAES5K6yUAryjCzeecWIl0GvrAWQ7FJqQg4')
 @bot.message_handler(commands=['start'])
 
 def start(message):
-    mess = f'<b>Доброго времени суток, {message.from_user.first_name} ! Вас приветствует официальный бот водоема Рыбалка Ковалевичи!' \
+    mess = f'<b>Доброго времени суток, {message.from_user.first_name}! Вас приветствует официальный бот платного водоема "Рыбалка Ковалевичи"' \
            f' Здесь вы можете узнать подробную информацию про отдых у нас на водоеме! </b>'
     photo = open('besed.jpeg', 'rb')
     bot.send_photo(message.chat.id, photo)
@@ -34,6 +34,11 @@ def location(message):
 @bot.message_handler(content_types=[ "photo"])
 def get_user_photo(message):
     bot.send_message(message.chat.id, 'ВАУ, крутое фото!')
+
+@bot.message_handler(content_types=[ "video"])
+def get_user_video(message):
+    bot.send_message(message.chat.id, 'ВАУ, крутой видос!')
+
 
 @bot.message_handler(commands=['VK'])
 def VK(message):
